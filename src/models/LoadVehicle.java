@@ -1,13 +1,17 @@
 /*
- * File: LoadVehicle.java
- * Created Date: 2021-09-25 00:46:41
- * Author: Sallai Andras
- * Github: https://github.com/andteki
+ * File: MainController.java
+ * Created Date: 2021-09-24 22:21:42
+ * Authors:Fésű Gábor,Vásárhelyi Ágoston, Baráth Máté 
+ * Original Author: Sallai Andras
+ * Github: https://github.com/gostonnn
+
+ *         
  * -----
- * Last Modified: 2021-09-25
- * Modified By: Sallai Andras
+ * Last Modified: 2021-10-208
+ * Modified By: Fésű Gábor,Vásárhelyi Ágoston, Baráth Máté 
  * -----
- * Copyright (c) 2021 Sallai Andras
+ * Copyright (c) 2021 Fésű Gábor,Vásárhelyi Ágoston, Baráth Máté 
+ * Group: Szoft II/N
  * 
  * GNU GPL v2
  */
@@ -21,31 +25,32 @@ import java.util.Scanner;
 
 public class LoadVehicle {
     ArrayList<String> vehicles;
+    ArrayList<Vehicle> vehicleList = new ArrayList<>();
     public LoadVehicle() {
         vehicles = new ArrayList<>();
-    }//A LoadVehicle metódus vége
+    }
 
-    public ArrayList<Vehicle> load(){
-    //A járművek listáját tárlojuk benne:
-    ArrayList<Vehicle> vehicleList = new ArrayList<>();
+    public void load(){
+        tryLoad();    
+    }
+    public ArrayList<Vehicle> tryLoad(){ 
     try {
-    FileReader fileReader = new FileReader("data.txt");
-    Scanner scanner = new Scanner(fileReader);
-    //Ciklus amivel bejárjuk a fájlt:
-    while(scanner.hasNext()) {
-    String line = scanner.nextLine();
-    String[] lineArray = line.split(":");
-    Vehicle vehicle = new Vehicle();
-    vehicle.ordinal = lineArray[0];
-    vehicle.brand = lineArray[1];
-    vehicle.year = lineArray[2];
-    vehicleList.add(vehicle);
-    }//while vége
-    scanner.close();
+        FileReader fileReader = new FileReader("data.txt");
+        Scanner scanner = new Scanner(fileReader);
+        while(scanner.hasNext()) {
+            String line = scanner.nextLine();
+            String[] lineArray = line.split(":");
+            Vehicle vehicle = new Vehicle();
+            vehicle.ordinal = lineArray[0];
+            vehicle.brand = lineArray[1];
+            vehicle.year = lineArray[2];
+            vehicleList.add(vehicle);
+        }
+        scanner.close();
 
     } catch (FileNotFoundException e) {
-    System.err.println("Hiba! A fájl nem található");
-    }//A try vége
+        System.err.println("Hiba! A fájl nem található");
+    }
     return vehicleList;
     }
 }
