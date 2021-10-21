@@ -1,5 +1,5 @@
 /*
- * File: MainController.java
+ * File: App.java
  * Created Date: 2021-09-24 22:21:42
  * Authors:Fésű Gábor,Vásárhelyi Ágoston, Baráth Máté 
  * Original Author: Sallai Andras
